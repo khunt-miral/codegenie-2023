@@ -4,12 +4,15 @@ public class PercentileScoreCalculator {
     int[] marks = {800, 300, 950, 760, 680, 490, 640};
     int yourScore = 760;
 
-    float percentileScore = PercentileScoreCalculatorSkeleton.calculatePercentileScore(totalStudents, marks, yourScore);
+    float percentileScore = calculatePercentileScore(totalStudents, marks, yourScore);
     System.out.printf("Your percentile score is : %.2f", percentileScore);
   }
 
   public static float calculatePercentileScore(int totalStudents, int[] marks, int yourScore) throws Exception {
-    //TODO: Implement this function and remove below line, which throws exception
-    throw new RuntimeException("Not Implemented");
+    float count = 0;
+    for (int mark : marks) {
+      if (mark < yourScore) count++;
+    }
+    return  (count / (float) totalStudents) * 100;
   }
 }
